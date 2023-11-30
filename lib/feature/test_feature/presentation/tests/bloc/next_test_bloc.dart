@@ -34,7 +34,7 @@ class NextTestBloc extends Bloc<NextTestEvent, NextTestState> {
     });
   }
   _finishTest(FinishTestEvent event,Emitter emit)async{
-    emit(LoadingNextTestState()); git init
+    emit(LoadingNextTestState());
     final either=await finishTestUseCase.call(event.testInfoForNext);
     either.fold((error) => emit(ErrorFinishTestState(error: error)), (test){
       emit(LoadedFinishTestState(finishTestEntity: test));
