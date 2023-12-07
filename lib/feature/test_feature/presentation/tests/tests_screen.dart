@@ -1,17 +1,17 @@
-import 'package:eco_kg/core/auto_route/auto_route.dart';
 import 'package:eco_kg/core/style/app_colors.dart';
-import 'package:eco_kg/feature/test_feature/domain/entities/testIngoForNext.dart';
-import 'package:eco_kg/feature/test_feature/presentation/finish/finish_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:eco_kg/feature/test_feature/domain/entities/testIngoForNext.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:eco_kg/feature/auth_feature/presentation/widgets/button.dart';
 import 'package:number_paginator/number_paginator.dart';
 import 'package:flutter/material.dart';
-import 'package:auto_route/auto_route.dart';
+import '../../../../core/auto_route/auto_route.dart';
 import '../../../../core/style/app_text_styles.dart';
 import '../../../auth_feature/presentation/widgets/appBarLeadintBack.dart';
 import '../../../home_feature/widget/bottom_background_image.dart';
+import '../../../splash_feature/presentation/bloc/language_bloc.dart';
 import '../../../widgets/progressWidget.dart';
-import 'bloc/next_test_bloc.dart';
+import '../bloc/test_bloc.dart';
 
 class TestsScreen extends StatefulWidget {
   const TestsScreen({super.key});
@@ -32,49 +32,73 @@ class _TestsScreenState extends State<TestsScreen> {
   String? question = '';
   String? testId = '';
   String? mId = '';
-
+  var lan = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Тест',
           style: AppTextStyles.clearSansMediumTextStyle16,
         ),
         leading: InkWell(
             onTap: () {
-              Navigator.pop(context);
+              AutoRouter.of(context).pop();
             },
             child: appBarLeading(context)),
         leadingWidth: 100,
       ),
-      body: BlocBuilder<NextTestBloc, NextTestState>(
+      body: BlocBuilder<LanguageBloc, LanguageState>(
+  builder: (context, stateLan) {
+    return BlocBuilder<TestBloc, TestState>(
         builder: (context, state) {
-          if (state is LoadingNextTestState) {
+          if (state is LoadingTestState) {
             return Center(child: progressWidget());
           }
-          if (state is LoadedGetFromBeginTestState) {
-            numberofPages = int.parse(state.beginTestEntity.count!);
-            answers = state.beginTestEntity.answer;
-            question = state.beginTestEntity.question;
+          if (state is LoadedTestState) {
+            if (stateLan.lanCode != 'ru') {
+              lan = stateLan.lanCode;
+            }
+            numberofPages = int.parse(state.testEntity.count!);
+            answers = state.testEntity.answer;
+            question = lan == ''
+                ? state.testEntity.question!
+                : lan == 'en'
+                ? state.testEntity.questionEn!
+                : state.testEntity.questionKy!;
             categoryId = state.categoryId;
-            testId = state.beginTestEntity.testId.toString();
-            mId = state.beginTestEntity.mid.toString();
-            currentPage = state.beginTestEntity.number;
+            testId = state.testEntity.testId.toString();
+            mId = state.testEntity.mid.toString();
+            currentPage = state.testEntity.number;
           }
           if (state is LoadedNextTestState) {
-            question = state.nextTestEntity.question;
+            if (stateLan.lanCode != 'ru') {
+              lan = stateLan.lanCode;
+            }
+            question = lan == ''
+                ? state.nextTestEntity.question!
+                : lan == 'en'
+                ? state.nextTestEntity.questionEn!
+                : state.nextTestEntity.questionKy!;
+
             answers = state.nextTestEntity.answer;
             mId = state.nextTestEntity.mid.toString();
             currentPage = state.nextTestEntity.number;
-            print("success");
+          }
+          if(state is LoadedResultTestState){
+            AutoRouter.of(context).replace(const FinishTestRoute());
           }
           if(state is LoadedFinishTestState){
-            /*Navigator.of(context).push(
-                MaterialPageRoute(
-                    builder: (context) => const FinishScreen()));*/
-            /*Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
-                FinishScreen()), (Route<dynamic> route) => false);*/
+            BlocProvider.of<TestBloc>(context)
+                .add(ResultTestEvent(finishTestEntity: state.finishTestEntity));
+          }
+          if(state is ErrorTestState){
+            return Stack(
+              children: [
+                Center(child: Text(state.error.toString())),
+                bottomBackgroungImage()
+              ],
+            );
           }
           return Stack(
             children: [
@@ -87,10 +111,6 @@ class _TestsScreenState extends State<TestsScreen> {
                     showPrevButton: false,
                     showNextButton: false,
                     numberPages: numberofPages!,
-                    onPageChange: (index) {
-                      currentPage = index;
-                      setState(() {});
-                    },
                     config: const NumberPaginatorUIConfig(
                       contentPadding: EdgeInsets.all(0),
                       buttonSelectedBackgroundColor: AppColors.color009D9B,
@@ -109,8 +129,12 @@ class _TestsScreenState extends State<TestsScreen> {
                       for (var item in answers!)
                         RadioListTile(
                             contentPadding: const EdgeInsets.all(0),
-                            title: Text(
-                              item.title!,
+                            title: Text(lan == ''
+                                ? item.title!
+                                : lan == 'en'
+                                ? item.titleEn!
+                                : item.titleKy!
+                              ,
                               style: AppTextStyles.clearSansS14CBlackF400,
                             ),
                             value: item.title,
@@ -134,16 +158,17 @@ class _TestsScreenState extends State<TestsScreen> {
                         width: MediaQuery.of(context).size.width - 32,
                         child: currentPage==numberofPages?button(text: 'Завершить'):button(text: 'Далее')),
                     onTap: () {
-                      var tempTestInfo = TestInfoForNext(
-                          test_id: testId!,
-                          question_id: mId!,
-                          answer_id: currentOptionId,
-                          category_id: categoryId!,
-                          number: currentPage.toString());
-                      if (currentOptionId != null) {
-                        currentPage==numberofPages ? BlocProvider.of<NextTestBloc>(context).add(
-                            PostNextTestEvent(testInfoForNext: tempTestInfo)) :
-                        BlocProvider.of<NextTestBloc>(context).add(
+                      if (currentOptionId != '') {
+                        var tempTestInfo = TestInfoForNext(
+                            test_id: testId!,
+                            question_id: mId!,
+                            answer_id: currentOptionId,
+                            category_id: categoryId!,
+                            number: currentPage.toString());
+                        currentOptionId='';
+                        currentPage!=numberofPages ? BlocProvider.of<TestBloc>(context).add(
+                            NextTestEvent(testInfoForNext: tempTestInfo)) :
+                        BlocProvider.of<TestBloc>(context).add(
                             FinishTestEvent(testInfoForNext: tempTestInfo));
                       }
                     },
@@ -151,32 +176,10 @@ class _TestsScreenState extends State<TestsScreen> {
               bottomBackgroungImage()
             ],
           );
-
         },
-      ),
-    );
-  }
-
-  emailFieldTemplate({required String hintText}) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      width: 358,
-      height: 56,
-      decoration: BoxDecoration(
-        color: AppColors.colorF7F7F7,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: SizedBox(
-        width: 274,
-        child: TextField(
-          controller: name,
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: hintText,
-            hintStyle: AppTextStyles.hintStyle,
-          ),
-        ),
-      ),
+      );
+  },
+),
     );
   }
 }

@@ -8,6 +8,7 @@ import '../../../core/style/app_colors.dart';
 import '../../../core/style/app_text_styles.dart';
 import '../../audit_feature/presentation/audit_screen.dart';
 import '../../audit_story/presentation/audit_story.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../certificates/presentation/certificates_screen.dart';
 import '../../consultation_feature/presentation/consultation_screen.dart';
 import '../../get_certificate/presentation/get_certificate_screen.dart';
@@ -22,8 +23,9 @@ Widget drawerBuild(BuildContext context,UserEnum userEnum){
     String name;
     String email;
     String phone;
+    final storage = const FlutterSecureStorage();
     return InkWell(
-      onTap: (){
+      onTap: () async {
         switch(drawerSelect){
           case DrawerSelect.userCabinet: {
             if(userEnum==UserEnum.auditor){
@@ -62,6 +64,7 @@ Widget drawerBuild(BuildContext context,UserEnum userEnum){
             callShowModelBottomSheet(context);
           }break;
           case DrawerSelect.exit: {
+            await storage.delete(key: 'authKey');
             AutoRouter.of(context).replaceAll([const SignInRoute()]);
           }break;
           default:{
@@ -100,7 +103,7 @@ Widget drawerBuild(BuildContext context,UserEnum userEnum){
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 37),
-                      const Text(
+                      Text(
                         'Айжан Мусаева',
                         style: AppTextStyles.clearSansMediumTextStyle16,
                       ),
@@ -150,7 +153,7 @@ Widget drawerBuild(BuildContext context,UserEnum userEnum){
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 37),
-                      const Text(
+                      Text(
                         'Азамат Сапаров',
                         style: AppTextStyles.clearSansMediumTextStyle16,
                       ),

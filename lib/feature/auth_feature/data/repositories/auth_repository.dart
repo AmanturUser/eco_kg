@@ -27,6 +27,20 @@ class AuthRepositoryImpl implements AuthRepository{
   }
 
   @override
+  Future<Either<Failure, bool>> readAuthKey() async {
+    return await _readAuthKey();
+  }
+
+  Future<Either<Failure, bool>> _readAuthKey() async {
+    try {
+      final pwModel = await authSourse.readAuthKey();
+      return Right(pwModel);
+    } on Failure catch (e) {
+      throw Left(ServerError(error: e));
+    }
+  }
+
+  @override
   Future<Either<Failure, bool>> checkConfirmationCode(String code) async {
     return await _checkConfirmationCode(code);
   }

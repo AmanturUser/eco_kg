@@ -14,11 +14,42 @@ class LoadingTestState extends TestState{
   List<Object> get props=>[];
 }
 
-class LoadedTestState extends TestState{
-  final BeginTestEntity testEntity;
-  const LoadedTestState({required this.testEntity});
+class LoadedInfoTestState extends TestState{
+  final Test infoTest;
+  const LoadedInfoTestState({required this.infoTest});
   @override
-  List<Object> get props=>[testEntity];
+  List<Object> get props=>[infoTest];
+}
+
+class LoadedTestState extends TestState{
+  final String categoryId;
+  final BeginTestEntity testEntity;
+  const LoadedTestState({required this.testEntity,required this.categoryId});
+  @override
+  List<Object> get props=>[testEntity,categoryId];
+}
+
+class LoadedNextTestState extends TestState{
+  final NextQuestionEntity nextTestEntity;
+  const LoadedNextTestState({required this.nextTestEntity});
+  @override
+  List<Object> get props=>[nextTestEntity];
+}
+
+class LoadedFinishTestState extends TestState{
+  final FinishTestEntity finishTestEntity;
+
+  const LoadedFinishTestState({required this.finishTestEntity});
+  @override
+  List<Object> get props=>[finishTestEntity];
+}
+
+class LoadedResultTestState extends TestState{
+  final FinishTestEntity finishTestEntity;
+  final String email;
+  const LoadedResultTestState({required this.finishTestEntity,required this.email});
+  @override
+  List<Object> get props=>[finishTestEntity];
 }
 
 class ErrorTestState extends TestState{

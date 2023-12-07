@@ -24,3 +24,8 @@ class CheckConfirmationCodeEvent extends AuthEvent {
   List<Object?> get props => [code];
 }
 
+class CheckAuthKeyEvent extends AuthEvent {
+  @override
+  List<Object?> get props => [];
+}
+

@@ -11,7 +11,7 @@ import '../entities/testIngoForNext.dart';
 
 @injectable
 class FinishTestUseCase extends UseCase<FinishTestEntity,TestInfoForNext>{
-  final BeginTestRepository beginTestRepository;
+  final TestRepository beginTestRepository;
   FinishTestUseCase({required this.beginTestRepository});
 
   @override

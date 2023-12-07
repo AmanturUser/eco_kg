@@ -31,7 +31,7 @@ class SuccessfullySignUpState extends AuthState {
 
 class ErrorAuthState extends AuthState {
   final Object error;
-  ErrorAuthState({
+  const ErrorAuthState({
     required this.error,
   });
   @override
@@ -40,9 +40,32 @@ class ErrorAuthState extends AuthState {
 
 class ErrorSignUpState extends AuthState {
   final Object error;
-  ErrorSignUpState({
+  const ErrorSignUpState({
     required this.error,
   });
+  @override
+  List<Object?> get props => [error];
+}
+
+
+class CheckAuthKeyState extends AuthState {
+  const CheckAuthKeyState();
+  @override
+  List<Object?> get props => [];
+}
+
+class BadAuthKeyState extends AuthState {
+  const BadAuthKeyState();
+  @override
+  List<Object?> get props => [];
+}
+
+class ErrorSecureState extends AuthState {
+  final Object error;
+  const ErrorSecureState({
+    required this.error
+  });
+
   @override
   List<Object?> get props => [error];
 }

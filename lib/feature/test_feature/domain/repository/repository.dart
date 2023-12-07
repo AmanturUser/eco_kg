@@ -7,7 +7,7 @@ import '../entities/finishTestEntity.dart';
 import '../entities/nextQuestionEntity.dart';
 import '../entities/testIngoForNext.dart';
 
-abstract interface class BeginTestRepository{
+abstract interface class TestRepository{
   Future<Either<Failure,BeginTestEntity>> beginTest(TestInfoForBegin testInfoForBegin);
   Future<Either<Failure,NextQuestionEntity>> nextTest(TestInfoForNext testInfoForBegin);
   Future<Either<Failure,FinishTestEntity>> finishTest(TestInfoForNext testInfoForBegin);

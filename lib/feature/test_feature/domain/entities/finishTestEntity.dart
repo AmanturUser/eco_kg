@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class FinishTestEntity extends Equatable {
-  FinishTestEntity({
+  const FinishTestEntity({
     required this.progressing,
     required this.achievment,
     required this.score,
@@ -21,5 +21,5 @@ class FinishTestEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-    progressing, achievment, score, ];
+    progressing, achievment, score ];
 }

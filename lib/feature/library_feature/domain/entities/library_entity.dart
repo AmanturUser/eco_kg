@@ -81,20 +81,20 @@ class DataProvider extends Equatable {
 class CatListElement extends Equatable {
   CatListElement({
     required this.id,
-    required this.titleEn,
+    required this.title,
   });
 
   final String? id;
-  final String? titleEn;
+  final String? title;
 
   factory CatListElement.fromJson(Map<String, dynamic> json){
     return CatListElement(
       id: json["id"],
-      titleEn: json["title_en"],
+      title: json["title"],
     );
   }
 
   @override
   List<Object?> get props => [
-    id, titleEn, ];
+    id, title, ];
 }

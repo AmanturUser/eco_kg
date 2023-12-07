@@ -15,7 +15,7 @@ Widget buttonWithIcon(String buttonText,String icon){
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset('assets/icon/${icon}', height: 24, width: 24),
+        Image.asset('assets/icon/$icon', height: 24, width: 24),
         const SizedBox(width: 10),
         Text(buttonText,style: AppTextStyles.clearSansMediumTextStyle16)
       ],

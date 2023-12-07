@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 ThemeData themeData = ThemeData(
-  appBarTheme: const AppBarTheme(
+  appBarTheme: AppBarTheme(
     centerTitle: true,
     titleTextStyle: AppTextStyles.clearSansMediumTextStyle16,
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
           color: AppColors.color009D9B
       ),
       backgroundColor: Colors.white,

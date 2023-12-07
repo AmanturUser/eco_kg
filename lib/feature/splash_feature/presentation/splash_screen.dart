@@ -1,4 +1,5 @@
 import 'package:eco_kg/core/auto_route/auto_route.dart';
+import 'package:eco_kg/feature/auth_feature/presentation/bloc/auth_bloc.dart';
 import 'package:eco_kg/feature/splash_feature/presentation/bloc/language_bloc.dart';
 import 'package:eco_kg/feature/splash_feature/presentation/widget/button_with_icon.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:eco_kg/core/utils/utils.dart';
 import 'package:eco_kg/feature/splash_feature/domain/entity/language.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -14,13 +16,21 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
+        child: BlocBuilder<AuthBloc, AuthState>(
+  builder: (context, state) {
+    if(state is CheckAuthKeyState){
+      AutoRouter.of(context).replace(const HomeRoute());
+    }
+    if(state is BadAuthKeyState){
+      AutoRouter.of(context).replace(const SignInRoute());
+    }
+    return Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 252),
-            Image.asset('assets/img/logo.png', height: 280, width: 280),
-            const SizedBox(height: 198),
+            const SizedBox(),
+            Image.asset('assets/img/logo.png', height: 280.h, width: 280.w),
+            const SizedBox(),
             InkWell(
               onTap: () async{
                 var items=Language.languageList();
@@ -48,8 +58,8 @@ class SplashScreen extends StatelessWidget {
                                   leading: Text(items[i].flag),
                                   onTap: (){
                                     BlocProvider.of<LanguageBloc>(context).add(SelectLanguageEvent(lanCode: items[i].languageCode));
+                                    BlocProvider.of<AuthBloc>(context).add(CheckAuthKeyEvent());
                                     Navigator.pop(context);
-                                    AutoRouter.of(context).replace(const HomeRoute());
                                   },
                                 ),
                               ),
@@ -66,7 +76,9 @@ class SplashScreen extends StatelessWidget {
               child: buttonWithIcon(context.text.select_language, 'global.png'),
             )
           ],
-        ),
+        );
+  },
+),
       ),
     );
   }

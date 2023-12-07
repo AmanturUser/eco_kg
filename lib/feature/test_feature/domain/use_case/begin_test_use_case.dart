@@ -9,7 +9,7 @@ import '../../../../core/use_case/use_case.dart';
 
 @injectable
 class BeginTestUseCase extends UseCase<BeginTestEntity,TestInfoForBegin>{
-  final BeginTestRepository beginTestRepository;
+  final TestRepository beginTestRepository;
   BeginTestUseCase({required this.beginTestRepository});
 
   @override

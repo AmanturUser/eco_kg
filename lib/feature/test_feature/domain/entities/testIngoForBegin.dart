@@ -4,5 +4,5 @@ class TestInfoForBegin{
   final String categoryId;
   final String region;
 
-  TestInfoForBegin({required this.companyName, required this.companyDirector, required this.categoryId, required this.region});
+  TestInfoForBegin({required this.companyName, required this.companyDirector, required this.categoryId, required this.region,required});
 }

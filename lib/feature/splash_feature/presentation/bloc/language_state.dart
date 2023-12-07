@@ -10,7 +10,6 @@ class LanguageState extends Equatable {
 
 class LanguageInitial extends LanguageState {
   LanguageInitial({required super.lanCode});
-
   @override
   List<Object> get props => [];
 }

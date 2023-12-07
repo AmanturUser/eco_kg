@@ -8,6 +8,7 @@ import '../../../../core/constants/api_constants.dart';
 
 abstract interface class IAuthSourse {
   Future<bool> signIn(String email);
+  Future<bool> readAuthKey();
 }
 
 @injectable
@@ -35,6 +36,12 @@ class AuthSourse implements IAuthSourse {
     }
   }
 
+  @override
+  Future<bool> readAuthKey() async {
+    final String? password = await storage.read(key: 'authKey');
+    return password != null;
+  }
+
   Future<bool> checkConfirmationCode(String code) async {
     var uri = Uri(
       scheme: scheme,
@@ -57,6 +64,9 @@ class AuthSourse implements IAuthSourse {
             ? UserEnum.applicant : UserEnum.auditor;
         await storage.write(
             key: 'roles', value: decodeData['user']['roles']['user']);
+        await storage.write(
+            key: 'email', value: decodeData['user']['email']);
+
       }
       return success;
     } else {

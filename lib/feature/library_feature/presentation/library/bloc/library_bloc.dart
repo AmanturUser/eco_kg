@@ -12,6 +12,7 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
   final LibraryUseCase libraryUseCase;
   LibraryBloc({required this.libraryUseCase}) : super(LibraryInitial()) {
     on<GetLibraryEvent>(_getLibrary);
+    on<DetailLibaryEvent>(_detailLibrary);
   }
   _getLibrary(GetLibraryEvent event,Emitter emit)async{
     emit(LoadingLibraryState());
@@ -20,5 +21,9 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
       print('len of products ${library.dataProvider.length}');
       emit(LoadedLibraryState(library: library));
     });
+  }
+  _detailLibrary(DetailLibaryEvent event,Emitter emit)async{
+    emit(LoadingLibraryState());
+    emit(LoadedDetailLibraryState(detailLibrary: event.detailLibrary));
   }
 }

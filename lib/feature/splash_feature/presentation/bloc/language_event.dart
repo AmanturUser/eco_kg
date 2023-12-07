@@ -6,10 +6,11 @@ abstract class LanguageEvent extends Equatable {
 
 class SelectLanguageEvent extends LanguageEvent {
   final String lanCode;
-  SelectLanguageEvent({
+  const SelectLanguageEvent({
     required this.lanCode
   });
 
   @override
   List<Object?> get props => [lanCode];
 }
+

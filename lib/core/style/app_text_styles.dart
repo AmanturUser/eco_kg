@@ -4,42 +4,48 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_colors.dart';
 
 class AppTextStyles {
-  static const TextStyle clearSansMediumTextStyle16 =
-  TextStyle(color: AppColors.colorBlack, fontSize: 16, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
-  static const TextStyle clearSansS16W400CBlack =
-  TextStyle(color: AppColors.colorBlack, fontSize: 16, fontWeight: FontWeight.w400,fontFamily: 'ClearSans');
-  static const TextStyle clearSansMedium16cl82 =
-  TextStyle(color: AppColors.color828282, fontSize: 16, fontWeight: FontWeight.w400,fontFamily: 'ClearSansMedium');
-  static const TextStyle clearSansS16cl82 =
-  TextStyle(color: AppColors.color828282, fontSize: 16, fontWeight: FontWeight.w400,fontFamily: 'ClearSans');
-  static const TextStyle clearSansMedium22 =
-  TextStyle(color: AppColors.colorBlack, fontSize: 22, fontWeight: FontWeight.w700,fontFamily: 'ClearSansMedium');
-  static const TextStyle clearSansMediumS22W500CBlack =
-  TextStyle(color: AppColors.colorBlack, fontSize: 22, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
-  static const TextStyle clearSansMediumTextStyle18 =
-  TextStyle(color: AppColors.colorBlack, fontSize: 18, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
-  static const TextStyle clearSansMediumTextStyle20 =
-  TextStyle(color: AppColors.colorBlack, fontSize: 20, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
-  static const TextStyle appBarLeadingStyle =
-  TextStyle(color: AppColors.color009D9B, fontSize: 16, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
+  static  TextStyle clearSansMediumTextStyle16 =
+  TextStyle(color: AppColors.colorBlack, fontSize: 16.sp, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
+  static  TextStyle clearSansMediumS13W500CBlack =
+  TextStyle(color: AppColors.colorBlack, fontSize: 13.sp, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
+  static  TextStyle clearSansS13W400CBlack =
+  TextStyle(color: AppColors.colorBlack, fontSize: 13.sp, fontWeight: FontWeight.w400,fontFamily: 'ClearSans');
+  static  TextStyle clearSansS16W400CBlack =
+  TextStyle(color: AppColors.colorBlack, fontSize: 16.sp, fontWeight: FontWeight.w400,fontFamily: 'ClearSans');
+  static  TextStyle clearSansMedium16cl82 =
+  TextStyle(color: AppColors.color828282, fontSize: 16.sp, fontWeight: FontWeight.w400,fontFamily: 'ClearSansMedium');
+  static  TextStyle clearSansS16cl82 =
+  TextStyle(color: AppColors.color828282, fontSize: 16.sp, fontWeight: FontWeight.w400,fontFamily: 'ClearSans');
+  static  TextStyle clearSansS11clWhiteW700 =
+  TextStyle(color: AppColors.colorWhite, fontSize: 11.sp, fontWeight: FontWeight.w700,fontFamily: 'ClearSans');
+  static  TextStyle clearSansMedium22 =
+  TextStyle(color: AppColors.colorBlack, fontSize: 22.sp, fontWeight: FontWeight.w700,fontFamily: 'ClearSansMedium');
+  static  TextStyle clearSansMediumS22W500CBlack =
+  TextStyle(color: AppColors.colorBlack, fontSize: 22.sp, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
+  static  TextStyle clearSansMediumTextStyle18 =
+  TextStyle(color: AppColors.colorBlack, fontSize: 18.sp, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
+  static  TextStyle clearSansMediumTextStyle20 =
+  TextStyle(color: AppColors.colorBlack, fontSize: 20.sp, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
+  static  TextStyle appBarLeadingStyle =
+  TextStyle(color: AppColors.color009D9B, fontSize: 16.sp, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
   static TextStyle hintStyle =
   TextStyle(color: AppColors.color828282, fontSize: 16.sp, fontWeight: FontWeight.w400,fontFamily: 'ClearSans');
-  static const TextStyle linkTextStyle =
-  TextStyle(color: AppColors.color2F89FC, fontSize: 16, fontWeight: FontWeight.w400,fontFamily: 'ClearSansMedium');
-  static const TextStyle buttonTextStyle =
-  TextStyle(color: AppColors.colorWhite, fontSize: 16, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
+  static  TextStyle linkTextStyle =
+  TextStyle(color: AppColors.color2F89FC, fontSize: 16.sp, fontWeight: FontWeight.w400,fontFamily: 'ClearSansMedium');
+  static  TextStyle buttonTextStyle =
+  TextStyle(color: AppColors.colorWhite, fontSize: 16.sp, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
   static TextStyle clearSansMediumS14C82F500 =
   TextStyle(color: AppColors.color828282, fontSize: 14.sp, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
   static TextStyle clearSansMediumS14CBlackF500 =
-  TextStyle(color: AppColors.colorBlack, fontSize: 14.sp, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
+  TextStyle(color: AppColors.colorBlack, fontSize: 14.sp.sp, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
   static TextStyle clearSansS12C82F400 =
   TextStyle(color: AppColors.color828282, fontSize: 12.sp, fontWeight: FontWeight.w400,fontFamily: 'ClearSans');
   static TextStyle clearSansLightS12CBlackF300 =
   TextStyle(color: AppColors.colorBlack, fontSize: 12.sp, fontWeight: FontWeight.w300,fontFamily: 'ClearSansLight');
   static TextStyle clearSansS12C009D9BF400 =
   TextStyle(color: AppColors.color009D9B, fontSize: 12.sp, fontWeight: FontWeight.w400,fontFamily: 'ClearSans');
-  static const TextStyle clearSansMediumS14W500C009D9B =
-  TextStyle(color: AppColors.color009D9B, fontSize: 14, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
+  static TextStyle clearSansMediumS14W500C009D9B =
+  TextStyle(color: AppColors.color009D9B, fontSize: 14.sp, fontWeight: FontWeight.w500,fontFamily: 'ClearSansMedium');
   static TextStyle clearSansS12W400CBlack =
   TextStyle(color: AppColors.colorBlack, fontSize: 12.sp, fontWeight: FontWeight.w400,fontFamily: 'ClearSans');
   static TextStyle clearSansMediumS12W500CWhite =
@@ -47,35 +53,35 @@ class AppTextStyles {
   static TextStyle clearSansS14CBlackF400 =
   TextStyle(color: AppColors.colorBlack, fontSize: 14.sp, fontWeight: FontWeight.w400,fontFamily: 'ClearSans');
 /*static const TextStyle blackText = TextStyle(
-      color: AppColors.customText, fontWeight: FontWeight.w600, fontSize: 18);
+      color: AppColors.customText, fontWeight: FontWeight.w600, fontSize: 18.sp);
   static const TextStyle black12 = TextStyle(
-      color: AppColors.customText, fontWeight: FontWeight.w500, fontSize: 12);
+      color: AppColors.customText, fontWeight: FontWeight.w500, fontSize: 12.sp);
   static const TextStyle black16 = TextStyle(
-      color: AppColors.customText, fontWeight: FontWeight.w500, fontSize: 16);
+      color: AppColors.customText, fontWeight: FontWeight.w500, fontSize: 16.sp);
   static const TextStyle custom20 = TextStyle(
-      color: AppColors.customText, fontWeight: FontWeight.w500, fontSize: 20);
+      color: AppColors.customText, fontWeight: FontWeight.w500, fontSize: 20.sp);
   static const TextStyle custom18 = TextStyle(
-      color: AppColors.customText, fontWeight: FontWeight.w500, fontSize: 18);
+      color: AppColors.customText, fontWeight: FontWeight.w500, fontSize: 18.sp);
   static const TextStyle custom14 = TextStyle(
-      color: AppColors.customText, fontWeight: FontWeight.w500, fontSize: 14);
-  static const TextStyle black14 = TextStyle(fontSize: 14, color: Colors.black);
+      color: AppColors.customText, fontWeight: FontWeight.w500, fontSize: 14.sp);
+  static const TextStyle black14 = TextStyle(fontSize: 14.sp, color: Colors.black);
   static const TextStyle custom15 = TextStyle(
-      fontWeight: FontWeight.w600, fontSize: 15, color: AppColors.customButton);
+      fontWeight: FontWeight.w600, fontSize: 15.sp, color: AppColors.customButton);
   static const TextStyle black15 = TextStyle(
-      fontWeight: FontWeight.w600, fontSize: 15, color: AppColors.customText);
+      fontWeight: FontWeight.w600, fontSize: 15.sp, color: AppColors.customText);
 
-  static const TextStyle black26 = TextStyle(fontSize: 26);
-  static const TextStyle black20 = TextStyle(fontSize: 20);
+  static const TextStyle black26 = TextStyle(fontSize: 26.sp);
+  static const TextStyle black20 = TextStyle(fontSize: 20.sp);
 
   static TextStyle black16Regular = TextStyle(
-    fontSize: 16.sp,
+    fontSize: 16.sp.sp,
     fontFamily: 'Gilroy',
     height: 1.5,
     color: AppColors.mainBlack,
   );
 
   static TextStyle black14Medium = TextStyle(
-    fontSize: 14.sp,
+    fontSize: 14.sp.sp,
     fontFamily: 'Gilroy',
     height: 1.18,
     fontWeight: FontWeight.w500,
@@ -83,7 +89,7 @@ class AppTextStyles {
   );
 
   static TextStyle black18Semibold = TextStyle(
-    fontSize: 18.sp,
+    fontSize: 18.sp.sp,
     fontFamily: 'Gilroy',
     height: 1.19,
     fontWeight: FontWeight.w600,
@@ -91,7 +97,7 @@ class AppTextStyles {
   );
 
   static TextStyle orange14Semibold = TextStyle(
-    fontSize: 14.sp,
+    fontSize: 14.sp.sp,
     fontFamily: 'Gilroy',
     height: 1.19,
     fontWeight: FontWeight.w600,
@@ -99,7 +105,7 @@ class AppTextStyles {
   );
 
   static TextStyle white16Bold = TextStyle(
-    fontSize: 16.sp,
+    fontSize: 16.sp.sp,
     fontFamily: 'Gilroy',
     height: 1.2,
     fontWeight: FontWeight.w700,
@@ -107,7 +113,7 @@ class AppTextStyles {
   );
 
   static TextStyle black20Bold = TextStyle(
-    fontSize: 20.sp,
+    fontSize: 20.sp.sp,
     fontFamily: 'Gilroy',
     height: 1.2,
     fontWeight: FontWeight.w700,
@@ -115,7 +121,7 @@ class AppTextStyles {
   );
 
   static TextStyle black16Medium = TextStyle(
-    fontSize: 16.sp,
+    fontSize: 16.sp.sp,
     fontFamily: 'Gilroy',
     height: 1.2,
     fontWeight: FontWeight.w500,

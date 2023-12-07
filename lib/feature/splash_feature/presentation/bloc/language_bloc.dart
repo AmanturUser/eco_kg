@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -12,7 +10,8 @@ class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
   }
 
   _selectLanguage(SelectLanguageEvent event, Emitter emit){
-
     emit(LanguageState(lanCode: event.lanCode));
   }
+
+
 }

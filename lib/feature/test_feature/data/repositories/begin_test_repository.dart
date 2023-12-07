@@ -10,11 +10,11 @@ import '../../domain/entities/testIngoForNext.dart';
 import '../../domain/repository/repository.dart';
 import '../data_source/test_server.dart';
 
-@Injectable(as: BeginTestRepository)
+@Injectable(as: TestRepository)
 
-class BeginTestRepositoryImpl implements BeginTestRepository{
+class TestRepositoryImpl implements TestRepository{
   final TestDataSource testDataSource;
-  BeginTestRepositoryImpl({required this.testDataSource});
+  TestRepositoryImpl({required this.testDataSource});
 
   @override
   Future<Either<Failure, BeginTestEntity>> beginTest(TestInfoForBegin testInfoForBegin) {

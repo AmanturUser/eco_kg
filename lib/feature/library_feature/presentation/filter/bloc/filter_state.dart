@@ -15,15 +15,17 @@ class LoadingFilterState extends FilterState{
 }
 
 class LoadedFilterState extends FilterState{
+  SelectEntity selectFilters;
+  SelectEntity removeFilters;
   final ParamEntity param;
-  LoadedFilterState({required this.param});
+  LoadedFilterState({required this.param,required this.selectFilters,required this.removeFilters});
   @override
-  List<Object> get props=>[param];
+  List<Object> get props=>[param,selectFilters,removeFilters];
 }
 
 class ErrorFilterState extends FilterState{
   final Object error;
-  ErrorFilterState({required this.error});
+  const ErrorFilterState({required this.error});
   @override
   List<Object> get props=>[error];
 }

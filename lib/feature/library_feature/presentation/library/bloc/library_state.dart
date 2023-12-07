@@ -21,6 +21,13 @@ class LoadedLibraryState extends LibraryState{
   List<Object> get props=>[library];
 }
 
+class LoadedDetailLibraryState extends LibraryState{
+  final DataProvider detailLibrary;
+  const LoadedDetailLibraryState({required this.detailLibrary});
+  @override
+  List<Object> get props=>[detailLibrary];
+}
+
 class ErrorLibraryState extends LibraryState{
   final Object error;
   const ErrorLibraryState({required this.error});
